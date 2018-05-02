@@ -1,0 +1,56 @@
+﻿<div class="container">
+    <h3 class="subtitle">Importação de Dados dos Alunos</h3>
+    <ul class="nav nav-tabs">
+        <li class="active"><a data-toggle="pill" href="#upload"><span class="glyphicon glyphicon-upload"></span> Importação</a></li>
+        <li><a data-toggle="pill" href="#listAlunos"><span class="glyphicon glyphicon-user"></span> Visualização</a></li>
+    </ul>
+</div>
+<div class="tab-content">
+    <div id="upload" class="tab-pane fade in active">
+        <div class="container" id="tela1">
+            <form id="formulario">
+                <div class="form-group">
+                     <input type="file" id="inputXML"/>
+                </div>
+            
+                <label id="inputXML-error" class="error" for="inputXML" style="display:none">O arquivo é obrigatório</label>
+
+                <div class="pull-right">
+                    <button type="submit" id="submit" class="btn btn-info" onclick="ReadXML(); return false">
+                        <span class="glyphicon glyphicon-upload"></span> Importar
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div id="listAlunos" class="tab-pane fade">
+        <div class="container" id="tela2">
+            <div class="row">
+                <div class="col-md-12">
+                    <table class="table table-striped table-bordered table-hover dt-responsive nowrap" cellspacing="0" width="100%" id="listTableAlunos">
+                        <thead>
+                            <tr>
+                                <th>
+                                    CPF
+                                </th>
+                                <th>
+                                    Nome do Aluno
+                                </th>
+                                <th>
+                                    Data de Nascimento
+                                </th>
+                                <th>
+                                    Nome da Mãe
+                                </th>
+                                <th>
+                                    Endereço
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
