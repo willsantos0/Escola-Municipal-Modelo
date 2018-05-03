@@ -12,11 +12,8 @@
         }
     });
 
-    $('#formulario').on('blur keyup change', '#inputXML', function (event) {
-       
-        Util.validateForm('#formulario');
-   
-      
+    $('#formulario').on('blur keyup change', '#inputXML', function (event) {       
+        Util.validateForm('#formulario');       
     });
     
 
