@@ -19,39 +19,15 @@
 
     $("#listTableAlunos").on("click", ".js-delete", function () {
         var button = $(this);
-
-        bootbox.confirm({
-            title: "Excluir Aluno?",
-            message: 'Deseja remover o aluno "' + button.attr('data-aluno-nome') + '"?',
-            className: 'bb-error-token-modal',
-            buttons: {
-                confirm: {
-                    label: '<i class="fa fa-check"></i> Sim',
-                    className: 'bb-btn btn-success'
-                },
-                cancel: {
-                    label: '<i class="fa fa-times"></i> Não',
-                    className: 'bb-btn btn-danger'
-                }
-            },
-            callback: function (result) {
-                       
-                if (result) {
-                    DeleteAluno(button);
-                }
-
-            }
-
-        });
+        DeleteAluno(button);
+        
     });
 
 });
 
 // Busca todos os Alunos
 function GetAllAlunos() {
-
-    var baseURL = 'http://localhost:6684/';
-
+     
     $.ajax({
         type: 'GET',
         url: baseURL + 'api/alunos',
@@ -98,39 +74,57 @@ function GetAllAlunos() {
 // Exclui um aluno
 function DeleteAluno(button) {
 
-    var baseURL = 'http://localhost:6684/';
-    
-    $.ajax({
-        url: baseURL + "/api/alunos/" + button.attr("data-aluno-id"),
-        method: "DELETE",
-        success: function () {
-            bootbox.alert({
-                message: 'O aluno "' + button.attr('data-aluno-nome') + '" foi excluído com sucesso!',
-                callback: function () {
-                    console.log('Aluno excluído com sucesso!');
-                }
-            });
-
-            //$('#listTableAlunos').dataTable().fnDestroy();
-            //$('#listTableAlunos tbody').html('');
-            $(button).closest('tr').remove();
+    bootbox.confirm({
+        title: "Excluir Aluno?",
+        message: 'Deseja remover o aluno "' + button.attr('data-aluno-nome') + '"?',
+        className: 'bb-error-token-modal',
+        buttons: {
+            confirm: {
+                label: '<i class="fa fa-check"></i> Sim',
+                className: 'bb-btn btn-success'
+            },
+            cancel: {
+                label: '<i class="fa fa-times"></i> Não',
+                className: 'bb-btn btn-danger'
+            }
         },
-        error: function (xhr) {
-            bootbox.alert({
-                message: xhr.responseText,
-                callback: function () {
-                    console.log(xhr.responseText);
-                }
-            });
+        callback: function (result) {
+
+            if (result) {
+                $.ajax({
+                    url: baseURL + "/api/alunos/" + button.attr("data-aluno-id"),
+                    method: "DELETE",
+                    success: function () {
+                        bootbox.alert({
+                            message: 'O aluno "' + button.attr('data-aluno-nome') + '" foi excluído com sucesso!',
+                            callback: function () {
+                                console.log('Aluno excluído com sucesso!');
+                            }
+                        });
+                      
+                        $(button).closest('tr').remove();
+                    },
+                    error: function (xhr) {
+                        bootbox.alert({
+                            message: xhr.responseText,
+                            callback: function () {
+                                console.log(xhr.responseText);
+                            }
+                        });
+                    }
+                });
+
+            }
+
         }
+
     });
+   
 }
 
 //Inserir estudantes através de um arquivo XML
 function InsertAlunos(alunos) {
-
-    var baseURL = 'http://localhost:6684/';
-
+   
     $.ajax({
         type: "POST",
         url: baseURL + "api/alunos/InsertList",
@@ -157,8 +151,10 @@ function ReadXML() {
     if (typeof (FileReader) != "undefined") {
         var reader = new FileReader();
         reader.onload = function (e) {
-            var xml = $.parseXML(e.target.result);
 
+        try {
+            var xml = $.parseXML(e.target.result);
+               
             var listAlunos = [];
 
             $(xml).find('Aluno').each(function (index, value) {
@@ -167,7 +163,7 @@ function ReadXML() {
                 var dataNascimento = $(this).find('DataNascimento').text();
                 var nomeMae = $(this).find('NomeMae').text();
                 var endereco = $(this).find('Endereco').text();
-                                          
+
                 if (cpf.trim() == '' || cpf == null) {
                     bootbox.alert('Erro no registro: ' + (index + 1) + '. CPF é obrigatório!');
                     return;
@@ -176,41 +172,41 @@ function ReadXML() {
                 var cpfValid = Util.ValidateCPF(cpf);
 
                 if (cpfValid == null) {
-                    bootbox.alert('Erro na linha: ' + (index + 1) + '. CPF deve estar no formato 00000000000!');
+                    bootbox.alert('Erro no registro: ' + (index + 1) + '. CPF deve estar no formato 00000000000!');
                     save = false;
                     return;
                 } else {
                     cpf = cpfValid;
                 }
 
-                   
+
                 if (nomeAluno.trim() == '' || nomeAluno == null) {
-                    bootbox.alert('Erro na linha: ' + (index + 1) + '. Nome do aluno é obrigatório!');
+                    bootbox.alert('Erro no registro: ' + (index + 1) + '. Nome do aluno é obrigatório!');
                     save = false;
                     return;
                 }
 
                 if (!Util.isDate(dataNascimento.trim())) {
-                    bootbox.alert('Erro na linha: ' + (index + 1) + '. Data de nascimento está com o formato inválido! Deverá estar com o formato: dd/MM/yyyy');
+                    bootbox.alert('Erro no registro: ' + (index + 1) + '. Data de nascimento está com o formato inválido! Deverá estar com o formato: dd/MM/yyyy');
                     save = false;
                     return;
                 }
 
 
                 if (dataNascimento.trim() == '' || dataNascimento == null) {
-                    bootbox.alert('Erro na linha: ' + (index + 1) + '. Data de nascimento é obrigatório!');
+                    bootbox.alert('Erro no registro: ' + (index + 1) + '. Data de nascimento é obrigatório!');
                     save = false;
                     return;
                 }
 
                 if (nomeMae.trim() == '' || nomeMae == null) {
-                    bootbox.alert('Erro na linha: ' + (index + 1) + '. Nome da mãe é obrigatório!');
+                    bootbox.alert('Erro no registro: ' + (index + 1) + '. Nome da mãe é obrigatório!');
                     save = false;
                     return;
                 }
 
                 if (endereco.trim() == '' || endereco == null) {
-                    bootbox.alert('Erro na linha: ' + (index + 1) + '. Endereço é obrigatório!');
+                    bootbox.alert('Erro no registro: ' + (index + 1) + '. Endereço é obrigatório!');
                     save = false;
                     return;
                 }
@@ -232,11 +228,17 @@ function ReadXML() {
 
             if (save && listAlunos.length > 0)
                 InsertAlunos(listAlunos);
+
+        } catch (e) {
+            bootbox.alert("XML está inválido, revise o arquivo e tente inserir novamente!");
         }
+
+        };
+       
         reader.readAsText($("#inputXML")[0].files[0], "ISO-8859-1");
     }
     else {
-        alert("Desculpe! Seu navegador não suporta a inclusão deste arquivo! Por favor, troque de navegador!");
+        bootbox.alert("Desculpe! Seu navegador não suporta a inclusão deste arquivo! Por favor, troque de navegador!");
     }
 }
   

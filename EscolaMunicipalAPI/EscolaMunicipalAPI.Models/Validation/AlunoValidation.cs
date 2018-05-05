@@ -8,15 +8,6 @@ namespace EscolaMunicipalAPI.Models.Validation
 {
     public class AlunoValidation
     {
-        //public string ValidationCPF(string cpf)
-        //{
-        //    string CPF = cpf.Replace(".", "").Replace("-", "");
-
-        //    if (CPF.Length == 11)
-        //        return CPF;
-        //    else
-        //        throw new Exception("CPF deve conter 11 caracteres!");
-        //}
         
         public bool DateIsValid(DateTime datetime)
         {

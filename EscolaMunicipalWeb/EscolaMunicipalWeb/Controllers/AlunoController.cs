@@ -13,7 +13,7 @@ namespace EscolaMunicipalWeb.Controllers
         {
             ViewBag.Title = "Página Inicial";
 
-            ViewBag.UrlApi =
+            ViewData["urlApi"] =
                   ConfigurationManager.AppSettings["urlApi"];
 
             return View();

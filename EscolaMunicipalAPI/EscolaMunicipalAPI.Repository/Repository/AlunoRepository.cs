@@ -1,6 +1,7 @@
 ﻿using EscolaMunicipalAPI.DataAccess;
 using EscolaMunicipalAPI.Models.Aluno;
 using EscolaMunicipalAPI.Models.Validation;
+using EscolaMunicipalAPI.Repository.Interface;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -9,7 +10,7 @@ using System.Web;
 
 namespace EscolaMunicipalAPI.Repository
 {
-    public class AlunoRepository : IRepository<Aluno>
+    public class AlunoRepository : IAlunoRepository
     {
 
         private Context _context;
@@ -89,12 +90,7 @@ namespace EscolaMunicipalAPI.Repository
         {
             return _context.Alunos.ToList().OrderBy(a => a.NomeAluno);
         }
-
-        /// <summary>
-        /// Busca aluno por cpf
-        /// </summary>
-        /// <param name="cpf"></param>
-        /// <returns></returns>
+        
         public Aluno GetByCPF(string cpf)
         {               
             var aluno = _context.Alunos.FirstOrDefault(a => a.CPF == cpf);

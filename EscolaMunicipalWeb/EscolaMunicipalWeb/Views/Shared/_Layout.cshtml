@@ -36,5 +36,9 @@
     @Scripts.Render("~/bundles/scripts")
     @RenderSection("scripts", required: false)
 
+    <script type="text/javascript">
+        var baseURL = '@((ViewData["urlApi"]).ToString())';
+    </script>
+
 </body>
 </html>

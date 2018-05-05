@@ -10,6 +10,7 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using EscolaMunicipalAPI.Models.Aluno;
 using EscolaMunicipalAPI.Repository;
+using EscolaMunicipalAPI.Repository.Interface;
 
 namespace EscolaMunicipalAPI.Controllers
 {
@@ -19,7 +20,7 @@ namespace EscolaMunicipalAPI.Controllers
     [RoutePrefix("api/alunos")]
     public class AlunoController : ApiController
     {
-        private IRepository<Aluno> _alunoRepository;
+        private IAlunoRepository _alunoRepository;
 
         
         public AlunoController()

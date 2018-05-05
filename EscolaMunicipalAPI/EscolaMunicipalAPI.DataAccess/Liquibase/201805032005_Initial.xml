@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+  
+    <preConditions>
+        <dbms type="mssql" />
+        <runningAs username="willian\\sqlserver"/>
+    </preConditions>
+
+    <changeSet id="Create_Table_Aluno" author="willian">
+        <createTable tableName="Aluno">
+            <column name="Id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+          <column name="CPF" type="nvarchar(15)">
+                <constraints nullable="false"/>
+          </column>
+            <column name="NomeAluno" type="nvarchar(255)">
+                <constraints nullable="false"/>
+            </column>
+          <column name="DataNascimento" type="datetime">
+                <constraints nullable="false"/>
+          </column>
+          <column name="NomeMae" type="nvarchar(255)">
+                <constraints nullable="false"/>
+          </column>
+          <column name="Endereco" type="nvarchar(255)">
+                <constraints nullable="false"/>
+          </column>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>
