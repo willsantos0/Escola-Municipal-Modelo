@@ -3,33 +3,35 @@
     ValidateCPF: function(c) {
         if ((c = c.replace(/[^\d]/g, "")).length != 11)
             return null;
-       
-        var r;
-        var s = 0;
 
-        for (i = 1; i <= 9; i++)
-            s = s + parseInt(c[i - 1]) * (11 - i);
 
-        r = (s * 10) % 11;
+        // Validação mais precisa. (No momento não é necessária)
+        //var r;
+        //var s = 0;
 
-        if ((r == 10) || (r == 11))
-            r = 0;
+        //for (i = 1; i <= 9; i++)
+        //    s = s + parseInt(c[i - 1]) * (11 - i);
 
-        if (r != parseInt(c[9]))
-            return null;
+        //r = (s * 10) % 11;
 
-        s = 0;
+        //if ((r == 10) || (r == 11))
+        //    r = 0;
 
-        for (i = 1; i <= 10; i++)
-            s = s + parseInt(c[i - 1]) * (12 - i);
+        //if (r != parseInt(c[9]))
+        //    return null;
 
-        r = (s * 10) % 11;
+        //s = 0;
 
-        if ((r == 10) || (r == 11))
-            r = 0;
+        //for (i = 1; i <= 10; i++)
+        //    s = s + parseInt(c[i - 1]) * (12 - i);
 
-        if (r != parseInt(c[10]))
-            return null;
+        //r = (s * 10) % 11;
+
+        //if ((r == 10) || (r == 11))
+        //    r = 0;
+
+        //if (r != parseInt(c[10]))
+        //    return null;
 
         return c;
         

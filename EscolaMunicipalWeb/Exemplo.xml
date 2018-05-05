@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>  
+<Alunos>  
+    <Aluno>  
+        <CPF>124.743.264-33</CPF>  
+        <NomeAluno>Adriana Da Silva</NomeAluno>  
+        <DataNascimento>  
+            12/04/1996  
+        </DataNascimento>  
+        <NomeMae>  
+            Maria da Silva
+        </NomeMae>
+        <Endereco>
+            Rua 2 nº 1205. Bairro Independência
+        </Endereco>  
+    </Aluno> 
+      <Aluno>  
+        <CPF>111.111.111-11</CPF>  
+        <NomeAluno>Aline Fernandes</NomeAluno>  
+        <DataNascimento>  
+            03/07/1995  
+        </DataNascimento>  
+        <NomeMae>  
+            Maria Fernandes
+        </NomeMae>
+        <Endereco>
+            Rua Rosário, nº 14. Bairro Goias.
+        </Endereco>  
+    </Aluno>
+    <Aluno>  
+        <CPF>222.222.222-22</CPF>  
+        <NomeAluno>João da Silva</NomeAluno>  
+        <DataNascimento>  
+            14/02/1995  
+        </DataNascimento>  
+        <NomeMae>  
+            Elza da Silva 
+        </NomeMae>
+        <Endereco>
+            Rua pereira nº 798. Bairro Jaqueti.
+        </Endereco>  
+    </Aluno>
+    <Aluno>  
+        <CPF>333.333.333-33</CPF>  
+        <NomeAluno>Jose Aparecido</NomeAluno>  
+        <DataNascimento>  
+            14/03/1993  
+        </DataNascimento>  
+        <NomeMae>  
+            Carmem Abadia Aparecido 
+        </NomeMae>
+        <Endereco>
+            Rua dos santos nº 67. Bairro Planalto.
+        </Endereco>  
+    </Aluno>
+    <Aluno>  
+        <CPF>44444444444</CPF>  
+        <NomeAluno>Willian Santos Silva</NomeAluno>  
+        <DataNascimento>  
+            11/05/1996  
+        </DataNascimento>  
+        <NomeMae>  
+            Adriana Cardoso Santos
+        </NomeMae>
+        <Endereco>
+            Rua das Araras, 1205. Bairro Independência
+        </Endereco>  
+    </Aluno>
+</Alunos>

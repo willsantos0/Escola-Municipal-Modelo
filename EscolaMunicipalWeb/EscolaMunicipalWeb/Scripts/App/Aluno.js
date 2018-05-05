@@ -146,7 +146,7 @@ function InsertAlunos(alunos) {
 function ReadXML() {
     var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.xml)$/;
 
-    var save = false;
+    var save = true;
    
     if (typeof (FileReader) != "undefined") {
         var reader = new FileReader();
@@ -223,7 +223,6 @@ function ReadXML() {
                 };
 
                 listAlunos.push(alunoEntity);
-                save = true;
             });
 
             if (save && listAlunos.length > 0)
