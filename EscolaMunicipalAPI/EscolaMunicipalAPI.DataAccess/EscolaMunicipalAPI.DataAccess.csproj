@@ -74,7 +74,8 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Liquibase\201805032005_Initial.xml" />
+    <Content Include="Liquibase\db.changelog-master.xml" />
+    <Content Include="Liquibase\db.changelog-1.0.xml" />
     <Content Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
